@@ -9,12 +9,12 @@ jobs:
   simple_deployment_pipeline:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
-      - name: npm install 
-        run: npm install  
+      - name: npm install
+        run: npm install
       - name: lint
         run: npm run eslint
       - name: build
@@ -23,6 +23,7 @@ jobs:
         run: npm run test
       - name: e2e tests
         uses: cypress-io/github-action@v4
+        run: npm install
         with:
           command: npm run test:e2e
           start: npm run start-prod
