@@ -1,9 +1,10 @@
-result="$(curl 'https://fullstackpokedex.fly.dev/health')"
+#!/bin/bash
+
+result=$(curl -s https://fullstackpokedex.fly.dev/health)
 
 if [ "$result" == "ok" ]; then
-  echo "Health is ok"
+  echo "Health ok"
   exit 0
-else
-  echo "Health is not ok"
-  exit 1
 fi
+
+exit 1
