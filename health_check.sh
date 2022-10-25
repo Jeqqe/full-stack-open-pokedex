@@ -1,5 +1,3 @@
-#!/bin/bash
-
 result="$(curl 'https://fullstackpokedex.fly.dev/health')"
 
 if [ "$result" == "ok" ]; then
