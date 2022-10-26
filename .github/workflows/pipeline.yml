@@ -13,7 +13,6 @@ env:
 
 jobs:
   simple_deployment_pipeline:
-    if: ${{ !contains(github.event.head_commit.message, '#tagonly') }}
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
@@ -36,7 +35,7 @@ jobs:
           start: npm run start-prod
           wait-on: http://localhost:5000
       - name: deploy to fly.io
-        if: ${{ (github.event_name == 'push') && !contains(github.event.head_commit.message, '#skip') }}
+        if: ${{ (github.event_name == 'push') && !contains(github.event.head_commit.message, '#skip') && !contains(github.event.head_commit.message, '#tagonly') }}
         run: flyctl deploy --remote-only
   tag_release:
     needs: [simple_deployment_pipeline]
