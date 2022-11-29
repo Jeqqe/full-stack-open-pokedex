@@ -2,7 +2,7 @@ name: Scheduled Health Check Ping
 
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '20 * * * *'
 
 jobs:
   scheduled_healthcheck_ping:
